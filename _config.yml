@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Leafx
+title: 'KeilAwk的部落阁'
 subtitle: ''
-description: ''
+description: 'KeilAwk的部落阁'
 keywords:
-author: Leafx
+author: KeilAwk
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: 'https://Leafx-code.github.io'
+url: 'https://KeilAwk.github.io'
 permalink: :year/:month/:title/
 permalink_defaults:
 pretty_urls:
@@ -102,6 +102,6 @@ theme: light
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/Leafx-code/Leafx-code.github.io/
-  branch: master
-  message: Updated
+  repo: https://github.com/KeilAwk/KeilAwk.github.io/
+  branch: gh_pages
+  message: Updated.
