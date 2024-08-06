@@ -35,19 +35,21 @@ B站上有旧代机提取的PPTChecker工具，优先使用这个修复
 
 国际版(好像停更)在 [easinote.seewo.com/english](https://easinote.seewo.com/english)
 
-MAXHUB版(HAXHUB Class)在 [www.maxhub.com/en/class](https://www.maxhub.com/en/class/)
+MAXHUB国际版(HAXHUB Class)在 [www.maxhub.com/en/class](https://www.maxhub.com/en/class/)
 
 ### 插件
 
-依赖插件，可以扩展EN5的画笔、启动匿名离线模式，云云
+依赖插件，可以扩展EN5的画笔、启动匿名离线模式，IWB强制识别，云云
 
 官方插件开发支持在 [github.com/EasiNote](https://github.com/EasiNote/)
 
 网上已知有整合 [BV1gP4y1i7TV](https://www.bilibili.com/video/BV1gP4y1i7TV)
 
+IWB插件（把非希沃设备识别成希沃，使EN5进入白板模式）: [bilibili.com/opus/744736836725768208](https://www.bilibili.com/opus/744736836725768208) 文中的蓝奏云链接是[lanzoue.com/iinUx0jfsw2h](https://lanzoue.com/iinUx0jfsw2h)
+
 ### EasiAgent 单点登录
 
-类似QQ PC的登陆服务，一次登录，各APP和网页都可以直接快速登陆
+类似QQ PC的登陆服务，一次登录，各希沃APP和网页都可以直接快速登陆
 
 原理是将登录请求以hosts定向的方式转发到本地服务
 
@@ -61,13 +63,13 @@ MAXHUB一些国内没有公开的资源如MAXHUB Windows镜像，在国际版官
 
 # 希沃大板维护
 
-“大板”指的是教室里那些白板
+“大板”指的是里那些白板（实体）
 
 ## 打开工程菜单
 
 使用遥控器，依次按`INPUT`、`1`、`3`、`7`、`9`即可
 
-## 还原大板Windows
+## 大板还原Windows
 
 旧代机（即Android版本低于9的），依次 进入安卓通道 -> 设置 -> 关于 -> 多次点击触控信息，直到出现还原提示即可
 
@@ -77,15 +79,16 @@ MAXHUB一些国内没有公开的资源如MAXHUB Windows镜像，在国际版官
 
 ## 激活大板
 
-开机后等待二维码出现（插网线到大板而不是PC模块，可能可以加快加载速度），使用微信扫码，按提示操作，取得希沃统一服务激活授权，即可获得几位数（好像是八位数？）的激活码
+开机后等待二维码出现（插网线到大板而不是PC模块，可能可以加快加载速度），使用微信扫码，按提示操作，填入实际地址，即可获得几位数（好像是八位数？）的激活码
 
 一码一设备，同设备激活码不会改变
 
 ## 希沃白板修改
 
-用以更好地维护与使用白板，内容包括：
+包括：
 
 ```
 1. 修改TouchService自启方式（仅win7设备）
-未完
+2. 修改UAC
+
 ```
