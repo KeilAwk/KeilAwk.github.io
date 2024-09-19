@@ -35,6 +35,8 @@ B站上有旧代机提取的PPTChecker工具，优先使用这个修复
 
 国际版(好像停更)在 [easinote.seewo.com/english](https://easinote.seewo.com/english)
 
+网页版在 [enweb.seewo.com](https://enweb.seewo.com/)
+
 MAXHUB国际版(HAXHUB Class)在 [www.maxhub.com/en/class](https://www.maxhub.com/en/class/)
 
 ### 插件
@@ -88,7 +90,13 @@ MAXHUB一些国内没有公开的资源如MAXHUB Windows镜像，在国际版官
 包括：
 
 ```
-1. 修改TouchService自启方式（仅win7设备）
-2. 修改UAC
-
+- 修改TouchService自启方式为计划任务（仅win7设备）
+- 修改UAC
+- 浏览器替换为Chrome并使用SwitchyOmega代理指向无效地址
+- 删除应用商店
+- 添加CooderDesk或MyDock
+- 使用火绒锁定CooderDesk或MyDock、桌面快捷方式设定、桌面快捷方式
+- 删除开始菜单系统程序，使用组策略禁用控制面板与设置、锁定任务栏
+- 网线改直插OPS
+- 禁用快速启动
 ```
