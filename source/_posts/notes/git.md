@@ -42,6 +42,11 @@ clone单分支：
 git clone --single-branch {repo} {dir}
 ```
 
+检出分支(example)：
+```sh
+git checkout main
+```
+
 ###加速git-bash
 
 - 使用反代
