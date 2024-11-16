@@ -1,8 +1,8 @@
 ---
-title: Git笔记
+title: Git
 date: 2024-09
-categories: 笔记
-hidden: true
+note: true
+tags:
 ---
 
 ## GPG&SSH

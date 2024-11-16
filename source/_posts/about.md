@@ -1,9 +1,14 @@
 ---
 title: 关于
 date: 2024-04
-tags:
+categories: 核心
+hidden: true
 ---
 
-(。・∀・)ノ 我是KeilAwk（其实这里我想用中文昵称，但我没想好 XD）
+(。・∀・)ノ 我是KeilAwk（其实这里我想用中文昵称，但我还没想好 XD）
 
-主页教育线，副业写bug、contributing和modding
+主业教育线，副业写bug、contributing和modding，也许还会有一些杂文（？）
+
+因为工作在身，容易长时间人间蒸发（），似也不容易深入发掘自己的爱好
+
+此处是我写一些随笔的地方，希望我生涩的文笔和堪忧的技术不会辣了你的眼 (つд⊂)

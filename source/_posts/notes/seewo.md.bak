@@ -1,8 +1,7 @@
 ---
-title: Seewo运维笔记
+title: Seewo运维
 date: 2024-08
 categories: 笔记
-hidden: true
 ---
 
 # 希沃生态应用
@@ -92,7 +91,6 @@ MAXHUB一些国内没有公开的资源如MAXHUB Windows镜像，在国际版官
 ```
 - 修改TouchService自启方式为计划任务（仅win7设备）
 - 修改UAC
-- 隐藏C、E盘
 - 浏览器替换为Chrome并使用SwitchyOmega代理指向无效地址
 - 删除应用商店
 - 添加CooderDesk或MyDock

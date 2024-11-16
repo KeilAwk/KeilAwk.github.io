@@ -1,8 +1,8 @@
 ---
-title: Windows系统日常
+title: Windows系统
 date: 2024-08
-categories: 笔记
-hidden: true
+note: true
+tags:
 ---
 
 # WinDbg调试dump

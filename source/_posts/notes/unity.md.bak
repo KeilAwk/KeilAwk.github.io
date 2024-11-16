@@ -1,8 +1,8 @@
 ---
-title: Unity开发笔记
+title: Unity开发
 date: 2024-09
-categories: 笔记
-hidden: true
+note: true
+tags:
 ---
 
 ## BepInEX框架
