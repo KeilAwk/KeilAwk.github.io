@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Git笔记 | KeilAwk的部落阁</title>
+  <meta name="author" content="KeilAwk">
+  
+  <meta name="description" content="KeilAwk的部落阁">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Git笔记"/>
+  <meta property="og:site_name" content="KeilAwk的部落阁"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+  
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nh00t4w5bq");
+</script>
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">KeilAwk的部落阁</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/null">主页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/note">笔记</a></li>
+    
+      <li><a href="/other_world">另一些世界</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-notes/git" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2024-09-01T00:00:00.000Z"><a href="/notes/git/">2024-09</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Git笔记</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h2 id="GPG-SSH"><a href="#GPG-SSH" class="headerlink" title="GPG&amp;SSH"></a>GPG&amp;SSH</h2><p>###命令<br>生成gpg秘钥:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --full-generate-key</span><br></pre></td></tr></table></figure>
+
+<p>获取当前的私钥列表:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --list-secret-keys --keyid-format=long</span><br></pre></td></tr></table></figure>
+
+<p>导出公钥(直接使用生成秘钥时返回的公钥id):</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --armor --<span class="built_in">export</span> &#123;<span class="built_in">id</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>生成ssh秘钥:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &#123;noreply-email&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>###命令</p>
+<p>快速设置:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#123;&#125;</span><br><span class="line">git config --global user.email &#123;&#125;</span><br><span class="line">git config --global commit.gpgsign <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>clone单分支：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> -branch &#123;name&#125;  --single-branch &#123;repo&#125; &#123;<span class="built_in">dir</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>pull并rebase提交：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase</span><br></pre></td></tr></table></figure>
+
+<p>检出分支(example)：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br></pre></td></tr></table></figure>
+
+<p>###加速git-bash</p>
+<ul>
+<li><p>使用反代<br>首先启动s302本地反代或watt toolkit的，启用github加速</p>
+<p>git全局设置(<code>git config --global --edit</code>)添加:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#此处`https`可换为`http`</span><br><span class="line">[https]</span><br><span class="line">    proxy=https://127.0.0.1/</span><br><span class="line">    sslBackend = schannel #使用系统证书服务</span><br><span class="line">    sslVerify=true #默认为true，如果git无法使用系统证书才应禁用该项</span><br></pre></td></tr></table></figure></li>
+<li><p>使用镜像</p>
+<p>使用<code>git remote set-url origin https://kkgithub.com/&#123;username&#125;/&#123;repo&#125;</code>替换本地repo远程地址即可，kkgithub会自动转发</p>
+<p>镜像也可以用来辅助clone大仓库，完事了再改回origin即可</p>
+</li>
+</ul>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><h3 id="PR-Review"><a href="#PR-Review" class="headerlink" title="PR Review"></a>PR Review</h3><p>不注意其实每个pr的review选项卡的每一个修改文件都是需要手动点击<code>Review</code>的（</p>
+<p>所以喜提YOLO徽章（合并未经审核的PR）</p>
+<h3 id="匿名提交"><a href="#匿名提交" class="headerlink" title="匿名提交"></a>匿名提交</h3><p>本地commit可以用虚拟个人信息，只要你传得上repo</p>
+<p>如果用的是组织账号，更甚</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+    <div id="giscus_comment">
+    <script src="https://giscus.app/client.js"
+        data-repo="KeilAwk/KeilAwk.github.io"
+        data-repo-id="R_kgDOLXpW5A"
+        data-category="Comments"
+        data-category-id="DIC_kwDOLXpW5M4Cdf5g"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled=""
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading=""
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a><small>1</small></li>
+  
+    <li><a href="/categories/%E6%A0%B8%E5%BF%83/">核心</a><small>2</small></li>
+  
+    <li><a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  以 CC-BY-NC-4.0 许可 保留所有权利 | 版权所有 © 2024-PRESENT KeilAwk
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

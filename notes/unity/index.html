@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Unity开发笔记 | KeilAwk的部落阁</title>
+  <meta name="author" content="KeilAwk">
+  
+  <meta name="description" content="KeilAwk的部落阁">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Unity开发笔记"/>
+  <meta property="og:site_name" content="KeilAwk的部落阁"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+  
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nh00t4w5bq");
+</script>
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">KeilAwk的部落阁</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/null">主页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/note">笔记</a></li>
+    
+      <li><a href="/other_world">另一些世界</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-notes/unity" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2024-09-01T00:00:00.000Z"><a href="/notes/unity/">2024-09</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">Unity开发笔记</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h2 id="BepInEX框架"><a href="#BepInEX框架" class="headerlink" title="BepInEX框架"></a>BepInEX框架</h2><h2 id="BepInEX项目配置"><a href="#BepInEX项目配置" class="headerlink" title="BepInEX项目配置"></a>BepInEX项目配置</h2><h2 id="BepInEX使用外部资源"><a href="#BepInEX使用外部资源" class="headerlink" title="BepInEX使用外部资源"></a>BepInEX使用外部资源</h2><p>在Editor内使用unity官方的Assetbundle Browser生成ab包，loadfromfile导入游戏即可</p>
+<p>可用Paths类获取插件所在路径</p>
+<h2 id="BepInEX与Unity-Editor协作"><a href="#BepInEX与Unity-Editor协作" class="headerlink" title="BepInEX与Unity Editor协作"></a>BepInEX与Unity Editor协作</h2><p>在Editor内使用bepinex插件内的MonoBehaviour</p>
+<p>直接在Editor里写空操作（只包含变量和方法的定义）MonoBehaviour组件在实际载入游戏时只有原版游戏的MonoBehaviour会被target，插件的则会因为找不到而不挂载</p>
+<p>将插件dll添加到unity中并在inspector关闭自动引用和可用性检测即可</p>
+<p>或者extren代码</p>
+<p>对于游戏原版的Assembly-CSharp，同，可用dsSpy修改dll名</p>
+<h2 id="HarmonyX"><a href="#HarmonyX" class="headerlink" title="HarmonyX"></a>HarmonyX</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> harmony = <span class="keyword">new</span> Harmony(<span class="string">&quot;patch&quot;</span>);</span><br><span class="line"></span><br><span class="line">Class &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建补丁1</span></span><br><span class="line">[<span class="meta">HarmonyPatch</span>]</span><br><span class="line"><span class="keyword">class</span> <span class="title">Class_Patch</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="keyword">class</span> <span class="title">Class_Patch2</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">HarmonyPatch()</span>]</span><br><span class="line">    [<span class="meta">HarmonyPatch()</span>]</span><br><span class="line">    [<span class="meta">HarmonyPrefix</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">Methob</span> ()</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//为所有Patch创建补丁实例，包括非本插件的</span></span><br><span class="line">harmony.PatchAll();</span><br><span class="line"></span><br><span class="line"><span class="comment">//仅本dll</span></span><br><span class="line">harmony.PatchAll( Assembly.GetAssembly( <span class="keyword">typeof</span>(Class_Patch) ) );</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定单独Patch</span></span><br><span class="line">CreateAndPatchAll( <span class="keyword">typeof</span>(Class_Patch) );</span><br><span class="line"></span><br><span class="line"><span class="comment">//unpatch一个类的prefix，但似乎不可用，目前只能unpatchself一个harmony实例</span></span><br><span class="line">harmony.Unpatch( <span class="keyword">typeof</span>(Class).GetMethob(<span class="string">&quot;methob&quot;</span>), HarmonyPatch.Perfix );</span><br><span class="line"></span><br><span class="line"><span class="comment">//真可用方法</span></span><br><span class="line">harmony.UnpatchSelf();</span><br></pre></td></tr></table></figure>
+
+<h2 id="BepInEX"><a href="#BepInEX" class="headerlink" title="BepInEX"></a>BepInEX</h2><h2 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个dontdestoryobj</span></span><br><span class="line">DontDestoryObject( gameObject );</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个static的class (下面成员必须static)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">Class</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//`Awake()` 在 `Start()` 执行之前</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//简单异步,，这里用了lamuda表达式</span></span><br><span class="line">Task.Run( () =&gt; &#123;</span><br><span class="line">    <span class="comment">//方法...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+    <div id="giscus_comment">
+    <script src="https://giscus.app/client.js"
+        data-repo="KeilAwk/KeilAwk.github.io"
+        data-repo-id="R_kgDOLXpW5A"
+        data-category="Comments"
+        data-category-id="DIC_kwDOLXpW5M4Cdf5g"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled=""
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading=""
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a><small>1</small></li>
+  
+    <li><a href="/categories/%E6%A0%B8%E5%BF%83/">核心</a><small>2</small></li>
+  
+    <li><a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  以 CC-BY-NC-4.0 许可 保留所有权利 | 版权所有 © 2024-PRESENT KeilAwk
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
