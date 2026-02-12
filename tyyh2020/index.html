@@ -75,25 +75,25 @@
     <h1 class="p-name title" itemprop="headline name">天翼一号2021刷机</h1>
   
 
-    
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
         <p>（这台应该是天翼一号全系支持比较友好的一台机子吧）</p>
 <blockquote>
-<p>[!tip]</p>
-<p>文中指向酷安的链接为防止其他麻烦，不展示直链，<strong>仅提供文章或动态id</strong></p>
-<p>有需要请自行在手机端酷安搜索<code>天翼一号2021+空格+对应关键词</code></p>
+<p>注意：</p>
+<p>文中指向酷安的链接为过分曝光与其他麻烦不展示直链，<strong>仅提供文章或动态id</strong></p>
+<p>有需要请自行在手机端酷安搜索<code>天翼一号2021+对应关键词</code></p>
 </blockquote>
 <h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><p>若USB连接时断时续，在控制面板的电源计划任务高级选项配置有关USB节能选项、任务管理器内USB Hub与主控的节能属性也一并操作即可</p>
 <p>多次尝试失败请重启或换一台电脑、数据线</p>
-<p>如果未安装fastboot驱动，可以在<a target="_blank" rel="noopener" href="https://www.jamcz.com/tutorial/wanji/">晨钟酱官网</a>找到fb驱动，在fastboot下刷机而不是解bl时在设备管理器手动为未知设备选择即可</p>
+<p>如果未安装fastboot驱动，可以在<a target="_blank" rel="noopener" href="https://www.jamcz.com/tutorial/wanji/">晨钟酱官网</a>找到fb驱动</p>
+<p>在fastboot下刷机而不是解bl时在设备管理器手动为未知设备选择即可</p>
 <p>建议提前了解adb、fastboot命令与cmd使用</p>
 <h2 id="解BL"><a href="#解BL" class="headerlink" title="解BL"></a>解BL</h2><p>参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/826636270832713811">Bilibili专栏原文</a></p>
 <p>检查驱动，然后手机进入下载模式，安装驱动，运行命令</p>
 <p>设备管理器出现新设备及电脑播放提示音时即可停止长按按键</p>
 <p>Zadig工具安装驱动时设备名为<code>iWHALE ****</code></p>
-<p>ID <code>****</code>则为文中的八位字符</p>
+<p>ID<code>****</code>则为文中的八位字符</p>
 <p>运行解bl的bat脚本时<strong>务必等待手机自动重启</strong>或cmd窗口焦点回归用户</p>
 <p>出现<code>按任意键继续</code>不代表已经完成解bl操作</p>
 <p><code>CHECK_BAUD FAIL</code> 意为设备连接失败，请检查usb连接与驱动</p>
@@ -108,20 +108,19 @@
 <p>（有些地方的震动反馈竟然不能关）</p>
 <p>刚开始用着有一点点卡，后来慢慢好像就好了</p>
 <p>疑似系统的手机管家无法使用</p>
-<h2 id="除此之外的系统包"><a href="#除此之外的系统包" class="headerlink" title="除此之外的系统包"></a>除此之外的系统包</h2><p>原版精简：<a href="">酷安 58449748</a></p>
-<p>原版（全量）：<a href="">酷安 41924738</a></p>
-<p>AOSP 10：<a href="">酷安 42583099</a>（当然这个里边大佬的群还有其他包，需要自求）</p>
+<h2 id="除此之外的系统包"><a href="#除此之外的系统包" class="headerlink" title="除此之外的系统包"></a>除此之外的系统包</h2><p>原版精简：<a href="58449748">酷安</a></p>
+<p>原版（全量）：<a href="41924738">酷安</a></p>
+<p>AOSP：<a href="42583099">酷安</a></p>
 <h2 id="删su文件后修复"><a href="#删su文件后修复" class="headerlink" title="删su文件后修复"></a>删su文件后修复</h2><p>删掉flyme系统自带的su文件后重启手机，自动引导到带开机画面的fastboot模式（手机左上角黑底白字写着<code>fastboot</code>）</p>
-<p>这个fastboot模式不完整，<code>fastboot reboot fastboot</code>重启到完整fastboot（黑底，可用音量键选择操作）</p>
+<p>这个fastboot模式不完整，<code>fastboot reboot fastboot</code>重启到完整fastboot</p>
 <p>重新刷入system分区即可（不丢数据）</p>
 <h2 id="引导修复"><a href="#引导修复" class="headerlink" title="引导修复"></a>引导修复</h2><p>删了或升级了magisk，开机时左上角仅显示一行黑底白字，无法进入系统</p>
-<p>这是magisk或用户在操作boot分区之后无法自行签名导致手机bootloader不认并取消启动系统导致</p>
-<p>boot引导修复包：<a href="">酷安 49323193</a></p>
+<p>这是magisk或用户在操作boot分区之后无法自行签名导致手机bootloader不认并取消启动系统导致的</p>
+<p>boot引导修复包：<a href="49323193">酷安</a></p>
 <p>下载原文评论区文件，重安装提供的驱动，在线刷工具选择<code>.pac</code>线刷包并点击开始，手机进入下载模式并连接电脑，等待工具自动响应并跑完进度条显示<code>Sucess</code>（不丢数据）</p>
-<p>上面的原版精简包的评论区也有直接引导fastboot工具</p>
 <p>所以更新magisk时请选择手动安装导出<code>boot.img</code>并在电脑签名后再在fastboot模式下自行刷入</p>
 <p>修改boot分区时也一样</p>
-<p>签名工具：<a href="">酷安 48980436</a></p>
+<p>签名工具：<a href="48980436">酷安</a></p>
 <h2 id="深度救砖"><a href="#深度救砖" class="headerlink" title="深度救砖"></a>深度救砖</h2><p>使用上面的全量包</p>
 <p>方法和boot修复一样</p>
 
@@ -141,6 +140,7 @@
     </footer>
   </div>
 </article>
+
 
 <section id="comment">
   <h1 class="title">留言</h1>
