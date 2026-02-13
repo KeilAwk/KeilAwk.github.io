@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>一种很新的Unity游戏汉化方案 | 开一的部落阁</title>
+  <meta name="author" content="KeilAwk">
+  
+  <meta name="description" content="开一的部落阁">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="一种很新的Unity游戏汉化方案"/>
+  <meta property="og:site_name" content="开一的部落阁"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+  
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nh00t4w5bq");
+</script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">开一的部落阁</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/note">笔记</a></li>
+    
+      <li><a href="/other_world">友链</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-unity_mlang" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2025-06-30T16:00:00.000Z"><a href="/unity_mlang/">2025-06</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">一种很新的Unity游戏汉化方案</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>目前，网上的大部分汉化教程都是修改游戏和资源文件的方案，毕竟是有点缺乏灵活性，必须随游戏更新多次再版重做</p>
+<p>所以在了解一些galgame游戏的自动翻译项目后，我开始尝试寻找类似的unity汉化方案</p>
+<p>然后发现一个插件XUnity.AutoTranslator，但是网上的文章都是关于配合在线翻译api使用的教程</p>
+<p>这里总结了一套比较完整的本地汉化方案（好像有点大材小用的样子</p>
+<p>使用插件翻译，你可以：</p>
+<ul>
+<li>无缝衔接游戏更新<br>不需要手动重制，一次发布长期使用</li>
+<li>完整（大概？）的跨平台支持<br>包括Windows、Linux和MacOS，从x86到ARM</li>
+<li>容易被带反作弊的游戏制裁？<br>（虽然那种本来就做不了汉化</li>
+</ul>
+<p>另请参考插件项目的README</p>
+<p>（另外，在本文从开始写稿拖了较长一段时间，发表布之前已经有dalao写过类似的了qaq</p>
+<p>（因此你还可以参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/830797634583134281">这篇bilibili专栏</a></p>
+<h2 id="安装前置框架和AutoTranslator"><a href="#安装前置框架和AutoTranslator" class="headerlink" title="安装前置框架和AutoTranslator"></a>安装前置框架和AutoTranslator</h2><p>参考一般插件安装教程 或 <a target="_blank" rel="noopener" href="https://github.com/bbepis/XUnity.AutoTranslator">项目README</a></p>
+<p>你可以按照项目README去使用其他模组框架</p>
+<p>建议BepInEX，下文使用的也是这个</p>
+<p>BepInEX不需要修改游戏文件，安装与使用没有其它过多额外步骤</p>
+<p>注意，如果你的unity游戏用的是il2cpp编译（特征是游戏文件有<code>GameAssembly.dll</code>），那么你也应该使用插件的il2cpp版本</p>
+<h2 id="编写翻译文件与制定配置"><a href="#编写翻译文件与制定配置" class="headerlink" title="编写翻译文件与制定配置"></a>编写翻译文件与制定配置</h2><h3 id="创建翻译文件"><a href="#创建翻译文件" class="headerlink" title="创建翻译文件"></a>创建翻译文件</h3><p>启动一次游戏来生成目录后，在<code>BepInEX/Translations/en/Text</code>（默认，由配置文件的 <code>Language</code> 一项决定）下新建一个txt文件</p>
+<p>名称随意，这里我的偏好是<code>main-schinese.txt</code></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>首先，用<code>;</code>表示注释开始，如下面，无论分号在哪里其后的内容绝对不参与翻译（但是注意空格）</p>
+<p>即忽略 <code>;本行不参与翻译</code> 和 <code>;后面这段不参与翻译</code>至本行末尾 这两处文本：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;本行不参与翻译</span></span><br><span class="line">正常翻译原文<span class="attr">A</span>=正常翻译结果B<span class="comment">;后面这段不参与翻译，不推荐这样子写注释，因为很难看</span></span><br></pre></td></tr></table></figure>
+
+<p>这是用来写给自己看的标记的，通俗来讲像“书签”或者“批注”，可以用来划分文本</p>
+<p>然后以每行为一个单位</p>
+<p>每行语法如下，则由此行内容，实际 <code>I&#39;m A!</code> 翻译为 <code>我是A！</code>：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I&#x27;m A!=我是A！</span><br></pre></td></tr></table></figure>
+
+<p>在上面例子中，使用等号来分割原文和译文，以本行第一个等号为划分点</p>
+<p>行中的等号无法被转义（即如果原文中有等号，这个 等号 可能会与用来分割原文和译文的 等号 混淆</p>
+<p>原文中出现等号的使用空格替代，以避免冲突（匹配 <code>=w=... Really?</code>，翻译成 <code>=w=... 真的吗？</code>）：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w ... Really?==<span class="attr">w</span>=... 真的吗？</span><br></pre></td></tr></table></figure>
+
+<p>小心空格，原文多了少了几个空格可能就匹配不到，译文末尾多了几个空格在游戏里也有可能不太合适</p>
+<p>另外注意换行符 <code>\n</code>，在单行文本中，这个符号表示换行</p>
+<p>对于富文本（rich text，参见<a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2020.3/Manual/StyledText.html">unity文档</a>），翻译文件中的原文依然需要包括xml标记，如下面的粗体标记<code>&lt;b&gt;&lt;/b&gt;</code>：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;WHAT ARE YOU DOING!?&lt;/b&gt;=&lt;b&gt;你在干什么！？&lt;/b&gt;</span><br></pre></td></tr></table></figure>
+
+<p>另外有正则表达式（regex）匹配翻译，用于匹配与替换翻译（匹配 <code>I&#39;m No.7!</code>，提取中间的数字 <code>7</code> 代入翻译成 <code>我是第7号！</code>）：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r: <span class="attr">&quot;I&#x27;m No.([0-9])!$&quot;</span>=我是第<span class="variable">$1</span>号！</span><br></pre></td></tr></table></figure>
+
+<p><code>$</code>必须放在末尾，每个<code>()</code>内放一个表达式块，在译文处按顺序以<code>$数字序号</code>引用。可以有多个表达式块</p>
+<p>如果原文有<code>&quot;</code>引号，改成<code>\&quot;</code>来转义:</p>
+<p>如果用<code>sr</code>代替<code>r</code>，被表达式匹配的这一小段文本会另外匹配翻译项再传入译文引用（匹配 <code>I&#39;m Apple!</code>，提取中间的文本二次翻译后，代入翻译成 <code>我是苹果！</code>）：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Apple</span>=苹果</span><br><span class="line">sr: <span class="attr">&quot;I&#x27;m ([\s\S]*)!$&quot;</span>=我是<span class="variable">$1</span>！</span><br></pre></td></tr></table></figure>
+
+<p>一般正则表达式用法请自行上网搜索，常用的有 <code>[\s\S]*</code> 用于匹配任意长短的任意字符</p>
+<p>正则表达式稍耗性能，尽量少用，适合的表达式可以降低性能损耗，如 <code>[0-9]</code>，只匹配一个单独出现的数字，两位数及以上匹配不到</p>
+<p>另有类似于regex的substitutions用于预处理翻译文本，因为不常用这里不写</p>
+<p>到这里，剩下的就是一点一点玩游戏，顺便打原文进文件，做翻译的繁琐工作了</p>
+<p>最终成品类似（某个游戏截取的。这里包含注释用来划分不同部分的翻译）：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;battledock_tech_weapon_name 科技树_武器_名称</span></span><br><span class="line">Standard <span class="attr">Issue</span>=标准武器</span><br><span class="line"><span class="attr">Resupply</span>=补给包</span><br><span class="line">Night Vision <span class="attr">Goggles</span>=夜视</span><br><span class="line">Tactical <span class="attr">Grenades</span>=战术手榴弹</span><br><span class="line"></span><br><span class="line"><span class="comment">;battledock_tech_weapon_description 科技树_武器_描述</span></span><br><span class="line">The Standard Issue weapons include the tried-and-true RK44, an SIND-7 sidearm along with equipment such as a wrench, saber and frag grenades.=包括久经实战的RK44 突击步枪, SIND-7 半自动手枪, 扳手, 军刀, 手雷这类装备</span><br><span class="line">This rocket launcher is an excellent counter to enemy <span class="attr">tanks</span>=反敌方装甲很好用</span><br></pre></td></tr></table></figure>
+
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><p>用scope来划分每一部分的翻译文本，如下面示例：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#set level 1,2,3</span></span><br><span class="line">CUSTOM <span class="attr">MAPS</span>=自定义地图</span><br><span class="line">GAME <span class="attr">MODE</span>=游戏模式</span><br><span class="line"><span class="comment">#unset level 1,2,3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#set exe game1,game2</span></span><br><span class="line"><span class="attr">BALANCE</span>=双方队伍人数平衡</span><br><span class="line">GAME <span class="attr">CONFIGURATION</span>=游戏配置</span><br><span class="line">CHARACTER <span class="attr">SKINS</span>=队伍皮肤</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">`<span class="comment">#set required-resolution height &gt; 1280 &amp;&amp; width &gt; 720</span></span><br><span class="line">WEAPON <span class="attr">SWITCH</span>=武器编辑页面</span><br><span class="line">VEHICLE <span class="attr">SWITCH</span>=载具编辑页面</span><br><span class="line"><span class="attr">MUTATORS</span>=脚本模组页面</span><br></pre></td></tr></table></figure>
+
+<p><code>#set level 1,2,3</code> 或 <code>#set level MainMenu</code> 表示从这里开始往下，这部分的翻译只应用于 “场景id为1和2和3的场景” 或 “场景名为<code>MainMenu</code>的场景”，用逗号分隔</p>
+<p>同类的是<code>#unset level 1,2,3</code>，表示从这里开始往下，这部分的翻译不应用于指定的场景</p>
+<p>空行好像不会中断标记作用范围</p>
+<p>（这部分内容未经实机测试。我隐约感觉 <code>#set level 1,2,3</code> 之后必须 <code>#unset level 1,2,3</code> 才完整有效，才能继续下一个新标记，按逻辑讲又不通）</p>
+<p>场景和场景id是unity开发的一个概念，参见<a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2020.3/Manual/scenes-working-with.html">unity文档</a></p>
+<p><code>#set exe game1</code> 表示从这里开始往下，这部分的翻译只应用于 “exe名为<code>game1</code>” 的游戏</p>
+<p>适用于有的游戏有多个exe，但bepinex不会识别具体是哪一个而全部加载本体和插件，插件全部翻译的特殊情况。同类标记同理</p>
+<p><code>#set required-resolution height &gt; 1280 &amp;&amp; width &gt; 720</code> 表示这部分的翻译只应用于当游戏窗口宽高均大于 1920x1680 时才使用，防止部分译文超出显示区域的情况。可用判断符号参考C#语法？</p>
+<h3 id="其他有用的功能与技巧"><a href="#其他有用的功能与技巧" class="headerlink" title="其他有用的功能与技巧"></a>其他有用的功能与技巧</h3><h4 id="在线翻译"><a href="#在线翻译" class="headerlink" title="在线翻译"></a>在线翻译</h4><p>启动过一次游戏，游戏目录下的<code>BepInEX/configs/</code>应该会出现<code>AutoTranslator.ini</code>文件</p>
+<p>这就是插件的配置文件</p>
+<p>打开它，建议配置<code>Endpoint</code>为空（即<code>Endpoint=</code>，等号后面的内容删掉），用于禁用在线翻译，防止基本不可用的默认谷歌翻译复活，生成狗屁不通的机翻到<code>_AutoGeneratedTranslations.txt</code></p>
+<p>如果你想先使用插件的自动翻译生成一部分文本，来降低工作量，参见其他教程，如<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/463748476">知乎</a></p>
+<p>这个有一个很蛋疼的问题是，生成到文件的翻译不知道是游戏里哪一处的</p>
+<p>找某一段文本修改的时候也很吃力</p>
+<h4 id="打印日志与快捷键"><a href="#打印日志与快捷键" class="headerlink" title="打印日志与快捷键"></a>打印日志与快捷键</h4><p>打开 <code>BepInEX\config\BepInEX.cfg</code>，将 <code>Enable Console</code> 修改为 <code>true</code> 即可</p>
+<p>这个是给下面快捷键 <code>Ctrl</code> + <code>Alt</code> + <code>小键盘7</code> 用的</p>
+<p>在游戏运行时点一下console窗口的区域可以强制暂停游戏，按回车键恢复</p>
+<p>快捷键：</p>
+<ul>
+<li><code>Alt</code> + <code>0</code><br>打开翻译器的游戏内UI</li>
+<li><code>Alt</code> + <code>1</code><br>打开翻译文本的对照ui？</li>
+<li><code>Alt</code> + <code>T</code><br>打开或关闭游戏内翻译</li>
+<li><code>Alt</code> + <code>R</code><br>重载翻译文件和重定向的资源文件 Not guaranteed to work for all textures.</li>
+<li><code>Alt</code> + <code>U</code><br>Manual hooking. The default hooks wont always pick up texts. This will attempt to make lookups manually. Will not hook text components from frameworks not enabled.</li>
+<li><code>Alt</code> + <code>F</code><br>切换 <code>OverrideFont</code> 或原游戏字体</li>
+<li><code>Alt</code> + <code>Q</code><br>  重启在线翻译模块</li>
+<li><code>Ctrl</code> + <code>Alt</code> + <code>小键盘9</code><br>  Simulate synchronous errors</li>
+<li><code>Ctrl</code> + <code>Alt</code> + <code>小键盘8</code><br>  Simulate asynchronous errors delayed by one second</li>
+<li><code>Ctrl</code> + <code>Alt</code> + <code>小键盘7</code><br>  在console输出当前场景id（<code>-1</code> 为未定义）和场景名</li>
+</ul>
+<h4 id="有用的配置项"><a href="#有用的配置项" class="headerlink" title="有用的配置项"></a>有用的配置项</h4><ul>
+<li><code>IgnoreWhitespaceInDialogue</code><br>忽略长文本中的空格</li>
+<li><code>OverrideFont</code>、<code>OverrideFontTextMeshPro</code>、<code>FallbackFontTextMeshPro</code><br>替换字体，因为有些游戏的中文字体支持残缺，需要替换<br>不带 <code>TextMeshPro</code> 的是通用字体<br>TMPro字体在插件的release那里有，下下来打开压缩包，选一个解压到游戏根目录，在配置文件填上字体名就可以了：<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">OverrideFontTextMeshPro</span>=arial_u2019_sdf</span><br></pre></td></tr></table></figure>
+如果不解压到游戏根目录，就需要填绝对路径</li>
+<li><code>GeneratePartialTranslations</code><br>启用滚动字体翻译<br>如剧情对话有文本滚动动画，有些时候只有当文本完全展示完，插件才能匹配原文到<br>启用这项之后就可以自动适配<br>但是可能会产生新的bug</li>
+<li><code>TextGetterCompatibilityMode</code><br>兼容性模式，如果插件在一般情况下无法正常工作</li>
+<li><code>ReloadTranslationsOnFileChange</code><br>修改文件时保存后自动重加载翻译文件到游戏，不需要手动reload</li>
+<li><code>EnableUIResizing</code>、<code>ResizeUILineSpacingScale</code>、<code>ForceUIResizing</code><br>重缩放ui，比如在翻译后文本超出显示区域<br>先改 <code>EnableUIResizing</code> 以启用，然后 <code>ResizeUILineSpacingScale</code> 改的是文本行之间的垂直间距</li>
+</ul>
+<h4 id="快速获取原文"><a href="#快速获取原文" class="headerlink" title="快速获取原文"></a>快速获取原文</h4><p>上文提到，翻译文件是在玩游戏的时候一点一点打把原文打进翻译文件然后再翻译的</p>
+<p>这样有时会很繁琐</p>
+<p>要直接获取原文，而不是手打，一个是传统方式（也就是传统汉化），如UABEA批量解包文本，请咨自行在Bing搜 <code>Unity游戏 汉化</code> 以查找相关已有教程，如 <a target="_blank" rel="noopener" href="https://github.com/mskgroup/Unity-Game-localization-tutorial-and-toolkit/">github.com&#x2F;mskgroup&#x2F;Unity-Game-localization-tutorial-and-toolkit</a></p>
+<p>一个是用插件，<a target="_blank" rel="noopener" href="https://docs.bepinex.dev/articles/dev_guide/dev_tools.html#runtime-unity-editor">Runtime Unity Editor</a>，但这个的话，有unity开发基础才能用得比较顺手，所以这里不作介绍</p>
+<h4 id="图片汉化"><a href="#图片汉化" class="headerlink" title="图片汉化"></a>图片汉化</h4><p>没错这个插件还可以用来汉化游戏内图片</p>
+<p>参见<a target="_blank" rel="noopener" href="https://github.com/bbepis/XUnity.AutoTranslator?tab=readme-ov-file#texture-translation">README</a></p>
+<p>基本流程为启用此功能，设置图片导出，p图</p>
+<h2 id="社区化安装工具"><a href="#社区化安装工具" class="headerlink" title="社区化安装工具"></a>社区化安装工具</h2><p>什么你说这个是用来干嘛的？</p>
+<p>主要是用来给不懂电脑的超萌新玩家用的，直接一步到位安装汉化</p>
+<p>（这部分还在整理）</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+    <div id="giscus_comment">
+    <script src="https://giscus.app/client.js"
+        data-repo="KeilAwk/KeilAwk.github.io"
+        data-repo-id="R_kgDONZZCMg"
+        data-category="Comments"
+        data-category-id="DIC_kwDONZZCMs4CmVcH"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled=""
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading=""
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a><small>4</small></li>
+  
+    <li><a href="/categories/%E6%A0%B8%E5%BF%83/">核心</a><small>2</small></li>
+  
+    <li><a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  以 CC-BY-NC-4.0 许可 保留所有权利 | 版权所有 © 2024-PRESENT KeilAwk 开一
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

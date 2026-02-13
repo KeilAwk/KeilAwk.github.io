@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Seewo运维笔记 | 开一的部落阁</title>
+  <title>希沃维护笔记 | 开一的部落阁</title>
   <meta name="author" content="KeilAwk">
   
   <meta name="description" content="开一的部落阁">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Seewo运维笔记"/>
+  <meta property="og:title" content="希沃维护笔记"/>
   <meta property="og:site_name" content="开一的部落阁"/>
 
   
@@ -35,7 +35,7 @@
 </script>
 
 
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -46,7 +46,7 @@
 <nav id="main-nav" class="alignright">
   <ul>
     
-      <li><a href="/null">主页</a></li>
+      <li><a href="/">主页</a></li>
     
       <li><a href="/archives">归档</a></li>
     
@@ -68,46 +68,53 @@
     <header>
       
         <div class="icon"></div>
-        <time class="dt-published" datetime="2024-08-01T00:00:00.000Z"><a href="/notes/seewo/">2024-08</a></time>
+        <time class="dt-published" datetime="2024-07-31T16:00:00.000Z"><a href="/notes/seewo/">2024-07</a></time>
       
       
   
-    <h1 class="p-name title" itemprop="headline name">Seewo运维笔记</h1>
+    <h1 class="p-name title" itemprop="headline name">希沃维护笔记</h1>
   
 
     </header>
     <div class="e-content entry" itemprop="articleBody">
       
-        <h1 id="希沃生态应用"><a href="#希沃生态应用" class="headerlink" title="希沃生态应用"></a>希沃生态应用</h1><h2 id="PPT小助手"><a href="#PPT小助手" class="headerlink" title="PPT小助手"></a>PPT小助手</h2><p>一个在Office放映ppt时显示的工具栏，现在已经被整合到 希沃课堂助手 (SeewoIwbAssistant) ，原有独立版已经不再维护</p>
-<p>对标完全可替代有<a target="_blank" rel="noopener" href="https://pie.hitecloud.cn/pie?flag=CxLPzyieeAHOTuOpyfnpdaFJPcLCZox5B7/cJtkr+ZCInMxHGMc8Mh7/d9TFGEZ7">鸿合演示助手</a>功能相对更丰富，触控体验更友好（UI排布位置偏低，不会高高在上），不依赖自启动，通过加载项（Office工具栏）的方式启动即可</p>
+        <h1 id="希沃生态应用"><a href="#希沃生态应用" class="headerlink" title="希沃生态应用"></a>希沃生态应用</h1><h2 id="PPT小助手"><a href="#PPT小助手" class="headerlink" title="PPT小助手"></a>PPT小助手</h2><p>一个在Office放映ppt时显示的工具栏，现在已经被整合到 希沃课堂助手 (<code>SeewoIwbAssistant</code>) ，原有独立版已经不再维护</p>
+<p>对标完全可替代有<a target="_blank" rel="noopener" href="https://pie.hitecloud.cn/pie?flag=CxLPzyieeAHOTuOpyfnpdaFJPcLCZox5B7/cJtkr+ZCInMxHGMc8Mh7/d9TFGEZ7">鸿合演示助手</a>功能相对更丰富，触控体验更友好（UI排布位置偏低，不会高高在上），不依赖自启动，通过加载项（Office工具栏）的方式启动即可，除了部分细节？</p>
+<p>或者用<code>Inkeys</code>或<code>Ink Canvas Plus</code>的辅助ppt功能</p>
 <p>另有网传的MAXHUB版的PPT小工具，但未公开下载，估计跟希沃的差不多</p>
 <p>新版长这样（在原有的翻页按钮、页面跳转与预览、一般工具、ppt分享的基础上添加了手机遥控翻页和更好的UI动效与隐藏工具栏）：</p>
 <p><img src="/img/notes/seewo.1.jpg" alt="截图"></p>
-<h3 id="PPT小助手修复"><a href="#PPT小助手修复" class="headerlink" title="PPT小助手修复"></a>PPT小助手修复</h3><p>B站上有旧代机提取的PPTChecker工具，优先使用这个修复</p>
+<h3 id="PPT小助手修复"><a href="#PPT小助手修复" class="headerlink" title="PPT小助手修复"></a>PPT小助手修复</h3><p>B站上有旧代机提取的<code>PPTChecker</code>工具，优先使用这个修复</p>
 <p>如果无效，使用<a target="_blank" rel="noopener" href="https://www.iobit.com/en/advanceduninstaller.php">IOBit Uninstaller</a>彻底卸载Office后重启，使用<a target="_blank" rel="noopener" href="https://otp.landian.vip/zh-cn/">Office Tool Plus</a>重新部署安装Office并重新安装PPT小工具即可</p>
-<h3 id="设置禁用PPT小助手"><a href="#设置禁用PPT小助手" class="headerlink" title="设置禁用PPT小助手"></a>设置禁用PPT小助手</h3><p>关闭PPT小助手的自启动即可（则下次开机时应用，否则应一并停止其现在运行的后台进程）</p>
+<h3 id="设置禁用PPT小助手"><a href="#设置禁用PPT小助手" class="headerlink" title="设置禁用PPT小助手"></a>设置禁用PPT小助手</h3><p>关闭PPT小助手的自启动即可（则下次开机时应用，否则一并停止其现在运行的后台进程）</p>
 <h2 id="希沃白板"><a href="#希沃白板" class="headerlink" title="希沃白板"></a>希沃白板</h2><p>希沃家主打的白板教学软件</p>
 <p>国际版(好像停更)在 <a target="_blank" rel="noopener" href="https://easinote.seewo.com/english">easinote.seewo.com&#x2F;english</a></p>
 <p>网页版在 <a target="_blank" rel="noopener" href="https://enweb.seewo.com/">enweb.seewo.com</a></p>
-<p>MAXHUB国际版(HAXHUB Class)在 <a target="_blank" rel="noopener" href="https://www.maxhub.com/en/class/">www.maxhub.com/en/class</a></p>
+<p>MAXHUB国际版(<code>HAXHUB Class</code>)在 <a target="_blank" rel="noopener" href="https://www.maxhub.com/en/class/">www.maxhub.com/en/class</a></p>
 <h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p>依赖插件，可以扩展EN5的画笔、启动匿名离线模式，IWB强制识别，云云</p>
 <p>官方插件开发支持在 <a target="_blank" rel="noopener" href="https://github.com/EasiNote/">github.com&#x2F;EasiNote</a></p>
 <p>网上已知有整合 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gP4y1i7TV">BV1gP4y1i7TV</a></p>
 <p>IWB插件（把非希沃设备识别成希沃，使EN5进入白板模式）: <a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/744736836725768208">bilibili.com&#x2F;opus&#x2F;744736836725768208</a> 文中的蓝奏云链接是<a target="_blank" rel="noopener" href="https://lanzoue.com/iinUx0jfsw2h">lanzoue.com&#x2F;iinUx0jfsw2h</a></p>
 <h3 id="EasiAgent-单点登录"><a href="#EasiAgent-单点登录" class="headerlink" title="EasiAgent 单点登录"></a>EasiAgent 单点登录</h3><p>类似QQ PC的登陆服务，一次登录，各希沃APP和网页都可以直接快速登陆</p>
 <p>原理是将登录请求以hosts定向的方式转发到本地服务</p>
-<p>已知有对此的项目用于希沃账号自动登录 ENAL（弃坑状态，开源，可在B站 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fz42197kn">BV1fz42197kn</a> 找到原视频） <a target="_blank" rel="noopener" href="https://enal.nlrdev.top/">enal.nlrdev.top</a></p>
-<h1 id="MAXHUB"><a href="#MAXHUB" class="headerlink" title="MAXHUB"></a>MAXHUB</h1><p>和希沃出自同一个母公司<a target="_blank" rel="noopener" href="http://www.cvte.com/">CVTE视源股份</a>，俗称C厂</p>
+<p>已知有对此的项目用于希沃账号自动登录 ENAL（可在B站 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fz42197kn">BV1fz42197kn</a> 找到原视频） <a target="_blank" rel="noopener" href="https://enal.nlrdev.top/">enal.nlrdev.top</a></p>
+<p>在<a target="_blank" rel="noopener" href="https://forum.smart-teach.cn/">智教论坛</a>也有类似替代工具</p>
+<h1 id="MAXHUB"><a href="#MAXHUB" class="headerlink" title="MAXHUB"></a>MAXHUB</h1><p>和希沃出自同一个母公司<a target="_blank" rel="noopener" href="http://www.cvte.com/">CVTE视源股份</a></p>
 <p>MAXHUB一些国内没有公开的资源如MAXHUB Windows镜像，在国际版官网的下载中心可以直接拿到链接下载</p>
 <h1 id="希沃大板维护"><a href="#希沃大板维护" class="headerlink" title="希沃大板维护"></a>希沃大板维护</h1><p>“大板”指的是里那些白板（实体）</p>
 <h2 id="打开工程菜单"><a href="#打开工程菜单" class="headerlink" title="打开工程菜单"></a>打开工程菜单</h2><p>使用遥控器，依次按<code>INPUT</code>、<code>1</code>、<code>3</code>、<code>7</code>、<code>9</code>即可</p>
-<h2 id="大板还原Windows"><a href="#大板还原Windows" class="headerlink" title="大板还原Windows"></a>大板还原Windows</h2><p>旧代机（即Android版本低于9的），依次 进入安卓通道 -&gt; 设置 -&gt; 关于 -&gt; 多次点击触控信息，直到出现还原提示即可</p>
-<p>新代机关机状态下长按开机键，直到开机键红蓝交替闪烁后松手，等待一下即可进入还原菜单（还原会同时还原安卓通道和PC模块，用时较长。还原后需要激活，硬件层面上）</p>
-<p><strong>切勿通过工程菜单还原（除非你是教师或校方管理，则有能力取得激活授权）</strong>，这只会还原安卓通道而不是Windows（即PC模块），并且<strong>设备需要重新激活（真的是硬件层面的，而不是Windows激活，未激活会锁设备）</strong></p>
+<p>也可以在关于平板那里多次交换点<code>Android 版本</code>和<code>核心版本</code>出来</p>
+<h2 id="区分大板代数"><a href="#区分大板代数" class="headerlink" title="区分大板代数"></a>区分大板代数</h2><p>参见<a target="_blank" rel="noopener" href="https://forum.smart-teach.cn/d/65-ru-he-pan-duan-xi-wo-jiao-hu-zhi-neng-ping-ban-dai-shu">智教论坛</a></p>
+<h2 id="大板还原Windows"><a href="#大板还原Windows" class="headerlink" title="大板还原Windows"></a>大板还原Windows</h2><p>旧代机（即Android版本低于9的），依次 进入安卓通道 -&gt; <code>设置</code> -&gt; <code>关于</code> -&gt; 多次点击<code>触控信息</code>，直到出现还原提示即可</p>
+<p>新代机关机状态下长按开机键，直到开机键红蓝交替闪烁后松手，等待一下即可进入还原菜单（还原会同时还原安卓通道和PC模块，用时较长。还原后需要激活）</p>
+<p><strong>切勿通过工程菜单还原（需要微信扫码激活授权，任何一个人的微信均可，不确定是否有次数限制）</strong></p>
+<p>这只会还原安卓通道而不是Windows（PC模块），并且<strong>设备需要重新激活（未激活会锁机）</strong></p>
 <h2 id="激活大板"><a href="#激活大板" class="headerlink" title="激活大板"></a>激活大板</h2><p>开机后等待二维码出现（插网线到大板而不是PC模块，可能可以加快加载速度），使用微信扫码，按提示操作，填入实际地址，即可获得几位数（好像是八位数？）的激活码</p>
 <p>一码一设备，同设备激活码不会改变</p>
+<h2 id="隐藏侧边栏"><a href="#隐藏侧边栏" class="headerlink" title="隐藏侧边栏"></a>隐藏侧边栏</h2><p>旧代机可以在安卓通道桌面的侧边栏app关闭</p>
+<p>非纯软件实现的较新代机多次点击侧边栏的齿轮图标大概五次可以调出关闭菜单，多次从边缘向内滑动可以重新启用</p>
 <h2 id="希沃白板修改"><a href="#希沃白板修改" class="headerlink" title="希沃白板修改"></a>希沃白板修改</h2><p>包括：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">重装win8.1?</span><br><span class="line">- 修改TouchService自启方式为计划任务（仅win7设备）</span><br><span class="line">- 修改UAC</span><br><span class="line">- 隐藏C、E盘</span><br><span class="line">- 浏览器替换为Chrome并使用SwitchyOmega代理指向无效地址</span><br><span class="line">- 删除应用商店</span><br><span class="line">- 添加CooderDesk或MyDock</span><br><span class="line">- 使用火绒锁定CooderDesk或MyDock、桌面快捷方式设定、桌面快捷方式</span><br><span class="line">- 删除开始菜单系统程序，使用组策略禁用控制面板与设置、锁定任务栏、隐藏系统电源选项</span><br><span class="line">- 网线改直插OPS</span><br><span class="line">- 禁用快速启动</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- 旧 重装win8.1?（希沃白板疑似会有bug</span><br><span class="line">- 旧 修改TouchService自启方式为计划任务</span><br><span class="line">- 修改UAC</span><br><span class="line">- 隐藏系统与备份盘</span><br><span class="line">- 浏览器替换为Chrome并使用SwitchyOmega代理指向无效地址</span><br><span class="line">- 新 删除应用商店</span><br><span class="line">- 添加PWA</span><br><span class="line">- 添加CooderDesk或MyDock</span><br><span class="line">  Mydock附加第三方U盘管理工具</span><br><span class="line">- 替换ppt小工具</span><br><span class="line">- 新 使用ImageGrass或HoneyView、Screenbox或VLC</span><br><span class="line">- 使用火绒锁定CooderDesk或MyDock配置、桌面快捷方式设定、桌面快捷方式</span><br><span class="line">- 删除开始菜单系统程序，使用组策略禁用控制面板与设置、锁定任务栏、隐藏系统电源选项</span><br><span class="line">- 网线改直插OPS</span><br><span class="line">- 新 禁用快速启动</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -159,7 +166,7 @@
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a><small>1</small></li>
+    <li><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a><small>4</small></li>
   
     <li><a href="/categories/%E6%A0%B8%E5%BF%83/">核心</a><small>2</small></li>
   

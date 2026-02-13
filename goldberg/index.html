@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用Goldberg EMU进行依赖Steam的本地联机测试 | 开一的部落阁</title>
+  <meta name="author" content="KeilAwk">
+  
+  <meta name="description" content="开一的部落阁">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="使用Goldberg EMU进行依赖Steam的本地联机测试"/>
+  <meta property="og:site_name" content="开一的部落阁"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+  
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nh00t4w5bq");
+</script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">开一的部落阁</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/note">笔记</a></li>
+    
+      <li><a href="/other_world">友链</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-goldberg" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2025-06-30T16:00:00.000Z"><a href="/goldberg/">2025-06</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">使用Goldberg EMU进行依赖Steam的本地联机测试</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>goldberg emu是一个用来替换steam远程联机成局域网内联机的项目</p>
+<p>它能做到的不止这些，实际上这个在国内最广泛的用途应该是作为盗版游戏的绕过steam补丁（同类的还有 ColdClientLoader</p>
+<p>我用这个这玩意的起因是我在测试一个unity独游的联机模块</p>
+<p>联机模块主机和客户端的通信走到的是steam p2p网络服务，当时最先想到的是在沙盒sandboxie开小号steam，走大名鼎鼎的 Spacewar（详见<a target="_blank" rel="noopener" href="https://partner.steamgames.com/doc/sdk/api/example">Steamworks</a>，教程不在这里）实现（没那个经济实力再买一份游戏hh）</p>
+<p>跑沙盒实际性能效果堪忧，体验及其繁琐</p>
+<p>最后想起了还有goldberg这玩意，但是在同一个主机上跑两个实例的配置过程仍然踩了不少坑，故留文记录</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>你可以在<a target="_blank" rel="noopener" href="https://mr_goldberg.gitlab.io/goldberg_emulator/">Gitlab</a>找到下载链接，最大字的那个链接就是</p>
+<p>复制一整份游戏到别的位置作为副本</p>
+<p>找到两份游戏的<code>steam_api64.dll</code>（<code>steam_api.dll</code>的64位版本，下午文统称后者）或者<code>steam_api.dll</code>，先备份一下，再用里面压缩包同名文件覆盖</p>
+<p><code>steam_appid.txt</code> 要放在<code>steam_api.dll</code>旁边</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>（下文的“实例”指多份游戏中的单独一份游戏）</p>
+<p>两份游戏的 <code>steam_appid.txt</code> 内的appid应该一致</p>
+<p>打开 <code>steam_api.dll</code> 旁的 <code>steam_settings</code> 文件夹</p>
+<p>在两份游戏间，我们需要配置不同的<code>force_steamid.EXAMPLE.txt</code>（steam用户id）</p>
+<p><code>force_account_name.EXAMPLE.txt</code>（用户名）</p>
+<p><code>custom_broadcasts.EXAMPLE.txt</code>（该实例用于通信的ip）</p>
+<p><code>force_listen_port.EXAMPLE.txt</code>（每个实例的通信端口。可能这项不用）</p>
+<p>id随便改两串不同的数</p>
+<p>用户名建议不同，用于区分</p>
+<p>ip为<code>127.0.0.*</code>，<code>*</code>换成0到255的任意不同数</p>
+<p>端口换成0到65535的任意不同数</p>
+<p>记得把文件名的<code>.EXAMPLE.</code>删掉</p>
+<p>其他游戏可能还有其他选项需要配置，例如可用语言和steamclient配置文件。参见goldberg emu的README</p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>现在同时打开两个游戏，同主机联机应现已可用</p>
+<p>若游戏带Steam DRM导致游戏无法脱离steam启动（连界面都不闪一下的那种），用 <a target="_blank" rel="noopener" href="https://github.com/atom0s/Steamless">Steamless</a> 解除即可</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+    <div id="giscus_comment">
+    <script src="https://giscus.app/client.js"
+        data-repo="KeilAwk/KeilAwk.github.io"
+        data-repo-id="R_kgDONZZCMg"
+        data-category="Comments"
+        data-category-id="DIC_kwDONZZCMs4CmVcH"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled=""
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading=""
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a><small>4</small></li>
+  
+    <li><a href="/categories/%E6%A0%B8%E5%BF%83/">核心</a><small>2</small></li>
+  
+    <li><a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  以 CC-BY-NC-4.0 许可 保留所有权利 | 版权所有 © 2024-PRESENT KeilAwk 开一
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

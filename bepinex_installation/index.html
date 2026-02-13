@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>全平台BepInEX安装指南 | 开一的部落阁</title>
+  <meta name="author" content="KeilAwk">
+  
+  <meta name="description" content="开一的部落阁">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="全平台BepInEX安装指南"/>
+  <meta property="og:site_name" content="开一的部落阁"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!--[if lt IE 9]><script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script><![endif]-->
+  
+
+  
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nh00t4w5bq");
+</script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">开一的部落阁</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/note">笔记</a></li>
+    
+      <li><a href="/other_world">友链</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article id="post-bepinex_installation" class="h-entry post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time class="dt-published" datetime="2025-06-30T16:00:00.000Z"><a href="/bepinex_installation/">2025-06</a></time>
+      
+      
+  
+    <h1 class="p-name title" itemprop="headline name">全平台BepInEX安装指南</h1>
+  
+
+    </header>
+    <div class="e-content entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>BepInEX 是一个强大的Unity跨平台modding框架</p>
+<p>然后你猜我为什么写这个？</p>
+<p>因为好像除了windows上的算比较详细，其他平台的基本没一个中文文档写有（</p>
+<p>注意，截至本文发布之前，BepInEX对arm架构没有官方支持，若无另行说明，请自行参考其他x64游戏转arm的教程</p>
+<p>以及 BepInEX 有 v5和v6-pre 版本之分</p>
+<p>参见<a target="_blank" rel="noopener" href="https://docs.bepinex.dev/">BepInEX官方文档</a></p>
+<h2 id="下载包"><a href="#下载包" class="headerlink" title="下载包"></a>下载包</h2><p>访问 <a target="_blank" rel="noopener" href="https://github.com/BepInEx/BepInEx/releases">github.com&#x2F;BepInEx&#x2F;BepInEx&#x2F;releases</a></p>
+<p>在 <code>Assets</code> 处选一个下载（建议先看完本文下面）</p>
+<p>如果无法访问github（虽然大概率连这个blog都访问不到hh），可以去<a target="_blank" rel="noopener" href="https://github.com/BepInEx/BepInEx">KGithub</a></p>
+<p>或者如果下载速度过慢，在release页面右键复制下载链接，去bing搜 “<code>github 加速</code>” 找一个加速平台即可</p>
+<h2 id="Windows下"><a href="#Windows下" class="headerlink" title="Windows下"></a>Windows下</h2><p>直接参见搜索引擎，例如：<a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/472944863580860569/">Bilibili专栏</a></p>
+<p>如果无法访问github（那么大概率连这个blog都访问不到hh），可以去<a target="_blank" rel="noopener" href="https://kkgithub.com/BepInEx/BepInEx">KGithub</a></p>
+<p>或者如果下载速度过慢，在release页面右键复制下载链接，去bing搜“<code>github 加速</code>”找一个加速平台即可（从kgithub拿的链接记得把链接里的kgithub改掉）</p>
+<h2 id="Linux下"><a href="#Linux下" class="headerlink" title="Linux下"></a>Linux下</h2><p>类似windows，下载对应linux版本，解压到游戏根目录即可，目录结构类似专栏图示</p>
+<p>然后用自己发行版中的文本编辑器打开 <code>run_bepinex.sh</code>，在 <code>executable_name=</code> 那行填入游戏的可执行文件名称，如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">executable_name=<span class="string">&quot;XXX.x86_64&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后在当前目录打开终端，运行如下命令赋予sh脚本可执行权限：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+x ./run_bepinex.sh</span><br></pre></td></tr></table></figure>
+
+<p>最后直接运行脚本，或在终端执行即可</p>
+<p>若要在Steam自动运行BepInEX，请打开游戏属性的高级启动选项，填入下列参数（若已有请先空格）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./run_bepinex.sh %<span class="built_in">command</span>%</span><br></pre></td></tr></table></figure>
+
+<p>如果你启用了Steam Play（proton），则不应使用linux原生包，而是解压windows版对应版本后，打开Steam游戏属性的高级启动选项，填入下列参数（若已有请先空格）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WINEDLLOVERRIDES=<span class="string">&quot;winhttp.dll=n,b&quot;</span> %<span class="built_in">command</span>%</span><br></pre></td></tr></table></figure>
+
+<h2 id="MacOS下"><a href="#MacOS下" class="headerlink" title="MacOS下"></a>MacOS下</h2><p>类似linux，解压对应版本，修改脚本，配置启动权限，运行</p>
+<p>用文本编辑器打开 <code>run_bepinex.sh</code>，在 <code>executable_name=</code> 那行填入游戏的可执行文件名称，如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">executable_name=<span class="string">&quot;XXX.app&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有在目录找到后缀名为“<code>.app</code>”的游戏文件，请，参见<a target="_blank" rel="noopener" href="https://blog.csdn.net/myownhappy/article/details/136112270">CSDN</a>，在访达右键菜单或游戏文件夹属性选项卡取消“<code>显示包内容</code>”</p>
+<p>若要在Steam自动运行BepInEX，先在游戏根目录右键打开终端，运行如下命令获取完整路径，并复制：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+<p>再打开游戏属性的高级启动选项，填入下列参数（若已有请先空格）：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;pwd/run_bepinex.sh&quot;</span> %<span class="built_in">command</span>%</span><br></pre></td></tr></table></figure>
+
+<p>里边的“<code>pwd</code>”换成上面复制的内容，最终类似：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;/Users/username/Library/Application Support/Steam/steamapps/common/xxx/run_bepinex.sh&quot;</span> %<span class="built_in">command</span>%</span><br></pre></td></tr></table></figure>
+
+<p>使用il2cpp编译的unity游戏在macos上无法运行 BepInEX </p>
+<p>若要在arm平台上运行，请在游戏根目录新建一个“<code>.sh</code>”文件，比如 <code>run.sh</code>，在文本编辑器输入：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">arch</span> -x86_64 /bin/bash <span class="string">&quot;pwd/run_bepinex.sh&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>同样替换掉 <code>pwd</code>，再 <code>chmod u+x ./run.sh</code>赋予执行权限</p>
+<p>则运行此新建的脚本即可正常在arm平台加载BepInEX</p>
+<p>此方法可能对某些非universal app包不可用</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+  </div>
+
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+    <div id="giscus_comment">
+    <script src="https://giscus.app/client.js"
+        data-repo="KeilAwk/KeilAwk.github.io"
+        data-repo-id="R_kgDONZZCMg"
+        data-category="Comments"
+        data-category-id="DIC_kwDONZZCMs4CmVcH"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled=""
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading=""
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/%E6%95%99%E7%A8%8B/">教程</a><small>4</small></li>
+  
+    <li><a href="/categories/%E6%A0%B8%E5%BF%83/">核心</a><small>2</small></li>
+  
+    <li><a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  以 CC-BY-NC-4.0 许可 保留所有权利 | 版权所有 © 2024-PRESENT KeilAwk 开一
+  
+</div>
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<script src="/js/gallery.js"></script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+<script>
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
